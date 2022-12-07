@@ -1,0 +1,197 @@
+<div class="container ">
+    <div class="row ">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <!-- Container wrapper -->
+                <div class="container">
+                <!-- Navbar brand -->
+                <a class="navbar-brand me-2" href="https://mdbgo.com/">
+                    <img
+                    src="../../assets/donate.png"
+                    height="50"
+                    alt="MDB Logo"
+                    loading="lazy"
+                    style="margin-top: -1px;"
+                    />
+                </a>
+            
+                <!-- Toggle button -->
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarButtonsExample"
+                    aria-controls="navbarButtonsExample"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <i class="fas fa-bars"></i>
+                </button>
+            
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <span class="nav-link" style="font-weight: bold; font-size: larger;">{{name}}</span>
+                    </li>
+                    </ul>
+                    <!-- Left links -->
+            
+                    <div class="d-flex align-items-center">
+                    <button class="btn btn-success me-3" data-mdb-toggle="modal" href="#exampleModalToggle1" role="button">
+                        Donate
+                    </button>
+
+                    <button type="button" class="btn btn-primary me-3" (click)="logout()">
+                        Logout
+                    </button>
+                    </div>
+                </div>
+                <!-- Collapsible wrapper -->
+                </div>
+                <!-- Container wrapper -->
+            </nav>
+            <br>
+            <ng-container *ngFor="let d of donations">
+                <div class="card" >
+                    <div class="card-body">
+                      <h5 class="card-title">{{d?.userId?.name}} made a donation of {{totalQuantity(d)}} items at <span style="font-size: 13px; color: grey">{{d?.updatedAt ? d?.updatedAt : d?.createdAt | date: 'dd/MM/yyyy hh:mm'}}</span></h5>
+                      <p class="card-text">We are so grateful for your contribution towards the community. 😀</p>
+                      <ng-container *ngFor="let a of d.items">
+                        <button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-color="dark" style="font-size:x-small">{{a.quantity}} x {{getItemType(a)}}</button>
+                        &nbsp;  
+                      </ng-container>
+                    </div>
+                </div>
+                <br>
+            </ng-container>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+
+
+<!-- First modal dialog -->
+<div class="modal fade" id="exampleModalToggle1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel1" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel1">Select Item Category</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="accordion" id="accordionExampleY">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOneY">
+                <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                  data-mdb-target="#collapseOneY" aria-expanded="false" aria-controls="collapseOneY" style="font-weight: bold;">
+                  <i class="fas fa-tshirt fa-sm me-2 opacity-70"></i>Clothes - Shirts/T-Shirts
+                </button>
+              </h2>
+              <div id="collapseOneY" class="accordion-collapse collapse" aria-labelledby="headingOneY"
+                data-mdb-parent="#accordionExampleY">
+                <div class="accordion-body" style="margin-left: auto; margin-right: 0;">
+                    <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="increase('shirts')">
+                        <i class="fab fa-plus"></i>
+                    </a>
+                    &nbsp;
+                    <a style="color: #3b5998;" style="font-size: larger;" role="button">
+                        {{shirts}}
+                    </a>
+                    &nbsp;
+                    <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="decrease('shirts')">
+                        <i class="fas fa-minus"></i>
+                    </a>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwoY">
+                <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                  data-mdb-target="#collapseTwoY" aria-expanded="false" aria-controls="collapseTwoY" style="font-weight: bold;">
+                  <i class="fas fa-male fa-sm me-2 opacity-70" style="font-size: larger;"></i>Clothes - Pants/Jeans/Trousers
+                </button>
+              </h2>
+              <div id="collapseTwoY" class="accordion-collapse collapse" aria-labelledby="headingTwoY"
+                data-mdb-parent="#accordionExampleY">
+                <div class="accordion-body">
+                    <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="increase('pants')">
+                        <i class="fab fa-plus"></i>
+                    </a>
+                    &nbsp;
+                    <a style="color: #3b5998;" style="font-size: larger;" role="button">
+                        {{pants}}
+                    </a>
+                    &nbsp;
+                    <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="decrease('pants')">
+                        <i class="fas fa-minus"></i>
+                    </a>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThreeY">
+                <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                  data-mdb-target="#collapseThreeY" aria-expanded="false" aria-controls="collapseThreeY" style="font-weight: bold;">
+                  <i class="fas fa-flask fa-sm me-2 opacity-70"></i>Books - Science/Physics/Chemistry/Biology
+                </button>
+              </h2>
+              <div id="collapseThreeY" class="accordion-collapse collapse" aria-labelledby="headingThreeY"
+                data-mdb-parent="#accordionExampleY">
+                <div class="accordion-body">
+                    <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="increase('science')">
+                        <i class="fab fa-plus"></i>
+                    </a>
+                    &nbsp;
+                    <a style="color: #3b5998;" style="font-size: larger;" role="button">
+                        {{science}}
+                    </a>
+                    &nbsp;
+                    <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="decrease('science')">
+                        <i class="fas fa-minus"></i>
+                    </a>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThreeY">
+                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                    data-mdb-target="#collapseFourY" aria-expanded="false" aria-controls="collapseFourY" style="font-weight: bold;">
+                    <i class="fas fa-atlas fa-sm me-2 opacity-70"></i>Books - Mathematics
+                  </button>
+                </h2>
+                <div id="collapseFourY" class="accordion-collapse collapse" aria-labelledby="headingThreeY"
+                  data-mdb-parent="#accordionExampleY">
+                  <div class="accordion-body">
+                    <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="increase('maths')">
+                        <i class="fab fa-plus"></i>
+                    </a>
+                    &nbsp;
+                    <a style="color: #3b5998;" style="font-size: larger;" role="button">
+                        {{maths}}
+                    </a>
+                    &nbsp;
+                    <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="decrease('maths')">
+                        <i class="fas fa-minus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+  
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a  class="btn btn-secondary btn-rounded" style="font-size:small" *ngIf="shirts > 0">{{shirts}} x Shirts</a>
+        <a  class="btn btn-secondary btn-rounded" style="font-size:small" *ngIf="pants > 0">{{pants}} x Pants</a>
+        <a  class="btn btn-secondary btn-rounded" style="font-size:small" *ngIf="science > 0">{{science}} x Science Books</a>
+        <a  class="btn btn-secondary btn-rounded" style="font-size:small" *ngIf="maths > 0">{{maths}} x Math Books</a>
+        <button class="btn btn-primary" (click)="donate()">
+          Donate
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

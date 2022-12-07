@@ -1,0 +1,35 @@
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.login-card {
+    max-width: 500px;
+    min-width: 300px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container > * {
+    width: 100%;
+}
+
+button {
+    border: 0;
+}
+
+mat-form-field {
+    display: block;
+}
+
+.example-button-row button,
+.example-button-row a {
+    margin-right: 8px;
+  }

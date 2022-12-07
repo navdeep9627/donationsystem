@@ -1,0 +1,287 @@
+<div class="container ">
+    <div class="row ">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <!-- Container wrapper -->
+                <div class="container">
+                <!-- Navbar brand -->
+                <a class="navbar-brand me-2" href="https://mdbgo.com/">
+                    <img
+                    src="../../assets/donate.png"
+                    height="50"
+                    alt="MDB Logo"
+                    loading="lazy"
+                    style="margin-top: -1px;"
+                    />
+                </a>
+            
+                <!-- Toggle button -->
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarButtonsExample"
+                    aria-controls="navbarButtonsExample"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <i class="fas fa-bars"></i>
+                </button>
+            
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <span class="nav-link" style="font-weight: bold; font-size: larger;">{{name}}</span>
+                    </li>
+                    </ul>
+                    <!-- Left links -->
+            
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-primary me-3" (click)="logout()">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+                <!-- Collapsible wrapper -->
+                </div>
+                <!-- Container wrapper -->
+            </nav>
+            <br>
+            <h4>Total Items Available</h4>
+            <br>
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Shirts/T-Shirts</h5>
+                              <p class="card-text">Total Quantity Available - <b>{{getQuantity('shirts')}}</b></p>
+                              <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal" *ngIf="getQuantity('shirts') > 0">Request</button>
+                              <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal" *ngIf="getQuantity('shirts') <= 0">Request</button>
+                            </div>
+                        </div>            
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Pants/Jeans/Trousers</h5>
+                              <p class="card-text">Total Quantity Available - <b>{{getQuantity('pants')}}</b></p>
+                              <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal2" *ngIf="getQuantity('pants') > 0">Request</button>
+                              <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal2" *ngIf="getQuantity('pants') <= 0">Request</button>
+                            </div>
+                        </div>            
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Science Books</h5>
+                              <p class="card-text">Total Quantity Available - <b>{{getQuantity('science')}}</b></p>
+                              <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal3" *ngIf="getQuantity('science') > 0">Request</button>
+                              <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal3" *ngIf="getQuantity('science') <= 0">Request</button>
+                            </div>
+                        </div>            
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Mathematics Books</h5>
+                              <p class="card-text">Total Quantity Available - <b>{{getQuantity('maths')}}</b></p>
+                              <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal4" *ngIf="getQuantity('maths') > 0">Request</button>
+                              <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal4" *ngIf="getQuantity('maths') <= 0">Request</button> 
+                            </div>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <h4>My Items Available</h4>
+            <br>
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Shirts/T-Shirts</h5>
+                              <p class="card-text">Quantity Available - <b>{{getQuantityMyItems('shirts')}}</b></p>
+                            </div>
+                        </div>            
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Pants/Jeans/Trousers</h5>
+                              <p class="card-text">Quantity Available - <b>{{getQuantityMyItems('pants')}}</b></p>
+                            </div>
+                        </div>            
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Science Books</h5>
+                              <p class="card-text">Quantity Available - <b>{{getQuantityMyItems('science')}}</b></p>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Mathematics Books</h5>
+                              <p class="card-text">Quantity Available - <b>{{getQuantityMyItems('maths')}}</b></p>
+                            </div>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <h4>Request History</h4>
+            <br>
+            <ng-container *ngFor="let req of requests">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">{{req.reqQuantity}} {{getItemType(req)}} requested at <span style="color: grey; font-size: smaller;">{{req?.createdAt | date: 'dd/MM/yyyy hh:mm'}}</span></h5>
+                      <p class="card-text" *ngIf="req.status === 0">You request of {{req.reqQuantity}} {{getItemType(req)}} is in Pending state. You will be notified if it is accepted or declined.</p>
+                      <p class="card-text" *ngIf="req.status === 1">You request of {{req.reqQuantity}} {{getItemType(req)}} has been accepted congrats 🎉</p>
+                      <p class="card-text" *ngIf="req.status === 2">You request of {{req.reqQuantity}} {{getItemType(req)}} has been declined, please raise another request if required.</p>
+                      <button type="button" class="btn btn-primary" style="font-size: x-small;" *ngIf="req.status === 0">Pending</button>
+                      <button type="button" class="btn btn-success" style="font-size: x-small;" *ngIf="req.status === 1">Accepted</button>
+                      <button type="button" class="btn btn-danger" style="font-size: x-small;" *ngIf="req.status === 2">Declined</button>
+                    </div>
+                </div>    
+                <br>
+            </ng-container>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+  
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                Shirts/T-Shirts 
+                <br>
+                Available Quantity - {{getQuantity('shirts')}}
+            </h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="margin: 0 auto">
+                <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="increase('shirts')">
+                    <i class="fab fa-plus"></i>
+                </a>
+                &nbsp;
+                <a style="color: #3b5998;" style="font-size: larger;" role="button">
+                    {{shirts}}
+                </a>
+                &nbsp;
+                <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="decrease('shirts')">
+                    <i class="fas fa-minus"></i>
+                </a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="sendRequest('shirts')">Send Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                Pants/Jeans/Trousers
+                <br>
+                Available Quantity - {{getQuantity('pants')}}
+            </h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="margin: 0 auto">
+                <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="increase('pants')">
+                    <i class="fab fa-plus"></i>
+                </a>
+                &nbsp;
+                <a style="color: #3b5998;" style="font-size: larger;" role="button">
+                    {{pants}}
+                </a>
+                &nbsp;
+                <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="decrease('pants')">
+                    <i class="fas fa-minus"></i>
+                </a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="sendRequest('pants')">Send Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                Science Books
+                <br>
+                Available Quantity - {{getQuantity('science')}}
+            </h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="margin: 0 auto">
+                <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="increase('science')">
+                    <i class="fab fa-plus"></i>
+                </a>
+                &nbsp;
+                <a style="color: #3b5998;" style="font-size: larger;" role="button">
+                    {{science}}
+                </a>
+                &nbsp;
+                <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="decrease('science')">
+                    <i class="fas fa-minus"></i>
+                </a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="sendRequest('science')">Send Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                Mathematics Books
+                <br>
+                Available Quantity - {{getQuantity('maths')}}
+            </h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="margin: 0 auto">
+                <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="increase('maths')">
+                    <i class="fab fa-plus"></i>
+                </a>
+                &nbsp;
+                <a style="color: #3b5998;" style="font-size: larger;" role="button">
+                    {{maths}}
+                </a>
+                &nbsp;
+                <a class="btn text-white" style="background-color: #3b5998;" role="button" (click)="decrease('maths')">
+                    <i class="fas fa-minus"></i>
+                </a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="sendRequest('maths')">Send Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+
